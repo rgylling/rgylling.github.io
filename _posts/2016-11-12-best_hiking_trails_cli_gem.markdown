@@ -1,13 +1,14 @@
 ---
 layout: post
 title:  "Best Hiking Trails CLI Gem"
-date:   2016-11-12 22:20:24 +0000
+date:   2016-11-12 17:20:24 -0500
 ---
 
 
 I decided to create a hiking trail CLI gem that would post the top 10 hikes and allow the user to get information about each hike. I think what took me the longest was figuring out what kind of gem I would like to build. Once I was able to come up with a subject (this took me about 4 hours) everything seemed to flow nicely from then on.
 
-## The challenge
+**The challenge**
+
 Finding a good website to scrape was definitely a challenge because most of the websites that I tried to scrape had very unsemantic HTML. For instance the original website I was trying to scrape information about each hiking trail had everything nested inside of a p tag for instance: 
 
 `<p>`<br>
@@ -23,7 +24,7 @@ Finding a good website to scrape was definitely a challenge because most of the 
 
 Eventually I was able to find a website that I thought was good enough to scrape. The website I used also has very unsemantic HTML so I knew scraping this data was going to be a challenge.
 
-### The Trail Titles
+**The Trail Titles**
 
 I noticed every one of the trail titles were in H3 tags.When I used Nokogiri's search method and targeted the H3's I would end up receiving a bunch of unwanted information that wasn't just the hiking trail titles I wanted. To combat this I was able to use Nokogiri's xpath method which grabs all elements that you want to target which would look something like:
 
@@ -46,7 +47,7 @@ After I received the all of the H3 elements on the page I looped through each on
     `trail_obj`<br>
   `end`<br>
 	
-### The Trail Information
+**The Trail Information**
 
 Getting the information was a little more tricky. Every trail information was in P tags along with pretty much everything else on the page. Originally each trail had its own page with information about each trail, so what I did was scrape each one of these pages (there was 10 pages) but I realized this was way too slow and too much data to grab. I ended up just grabbing every P in the content section of the first page which contained author names and useless information that I didn't want. To combat this I looped through each one of the p tags and used gsub to take out the useless information that I didn't want. Here is the code:
 
@@ -62,5 +63,6 @@ Getting the information was a little more tricky. Every trail information was in
    ` information_arr[number]`** --Here I return the array with the argument that is supplied in my title method**<br>
   `end`<br>
 
-## The Take away
+**The Take away**
+
 After finishing this project I realized how important writing clear semantic HTML is and seperating your sections properly, especially if somebody is trying to steal all of your html :D!
