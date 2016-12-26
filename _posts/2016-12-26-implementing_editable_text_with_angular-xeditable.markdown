@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Implementing editable text with Angular-xeditable"
-date:   2016-12-26 21:18:39 +0000
+date:   2016-12-26 16:18:40 -0500
 ---
 
 
